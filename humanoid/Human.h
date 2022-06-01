@@ -9,7 +9,12 @@
 #include "Humanoid.h"
 
 class Human : public Humanoid{
-
+public:
+    Human();
+private:
+    unsigned int id;
+    static unsigned int staticId;
+    static const char SYMBOL = 'h';
 };
 
 

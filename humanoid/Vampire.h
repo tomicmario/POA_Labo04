@@ -10,10 +10,11 @@
 
 class Vampire : public Humanoid{
 public:
-    Vampire(unsigned int speeed);
+    Vampire(unsigned int speed);
 private:
     unsigned int id;
     static unsigned int staticId;
+    static const char SYMBOL = 'V';
 };
 unsigned int Vampire::staticId = 0;
 

@@ -6,7 +6,9 @@
 #define LABO_04_HUMANOID_H
 
 
+#include "../graphics/Field.h"
 
+class Field;
 
 class Humanoid {
 public:
@@ -15,14 +17,23 @@ public:
     unsigned getX() const;
     unsigned getY() const;
     unsigned getSpeed() const;
+
+    void executeAction(Field field);
+
+    void setAction(Field field);
+
+    bool isAlive();
+
 private:
     unsigned x;
     unsigned y;
     unsigned speed;
     unsigned int id;
     static unsigned int staticId;
+    bool alive;
+
 };
-unsigned int Humanoid::staticId = 0;
+
 
 
 #endif //LABO_04_HUMANOID_H

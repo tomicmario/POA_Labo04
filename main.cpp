@@ -1,6 +1,11 @@
-#include <iostream>
+
+#include "graphics/Field.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+
+    Field f(10, 40);
+
+    f.display();
+
     return 0;
 }
