@@ -6,9 +6,8 @@
 
 unsigned int Humanoid::staticId = 0;
 
-Humanoid::Humanoid()
-: id(staticId++), alive(true)
-{
+Humanoid::Humanoid(char symbol)
+: id(staticId++), alive(true), SYMBOL(symbol) {
 
 }
 
@@ -24,7 +23,12 @@ void Humanoid::setAction(Field field) {
 
 }
 
-bool Humanoid::isAlive() {
+bool Humanoid::isAlive() const{
     return alive;
 }
+
+char Humanoid::getSymbol() const{
+    return SYMBOL;
+}
+
 

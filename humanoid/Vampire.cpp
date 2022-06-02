@@ -4,6 +4,6 @@
 
 #include "Vampire.h"
 
-Vampire::Vampire(unsigned int speed)
+Vampire::Vampire(unsigned int speed) : Humanoid(SYMBOL)
 
 {}

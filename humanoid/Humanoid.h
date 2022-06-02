@@ -12,7 +12,6 @@ class Field;
 
 class Humanoid {
 public:
-    Humanoid();
     void setPosition();
     unsigned getX() const;
     unsigned getY() const;
@@ -22,15 +21,18 @@ public:
 
     void setAction(Field field);
 
-    bool isAlive();
+    bool isAlive() const;
+    char getSymbol() const;
 
-private:
+protected:
+    Humanoid(char symbol);
     unsigned x;
     unsigned y;
     unsigned speed;
     unsigned int id;
     static unsigned int staticId;
     bool alive;
+    const char SYMBOL;
 
 };
 

@@ -3,3 +3,7 @@
 //
 
 #include "Human.h"
+
+Human::Human(): Humanoid(SYMBOL) {
+
+}

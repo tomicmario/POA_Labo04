@@ -3,3 +3,7 @@
 //
 
 #include "Buffy.h"
+
+Buffy::Buffy(): Humanoid(SYMBOL) {
+
+}
