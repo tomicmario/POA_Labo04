@@ -7,6 +7,7 @@
 
 
 #include "../graphics/Field.h"
+#include <iostream>
 
 class Controller {
 public:
@@ -17,7 +18,7 @@ private:
     const unsigned HUMANS;
     const unsigned VAMPIRES;
     const Field field;
-
+    unsigned round;
     void display();
 };
 
