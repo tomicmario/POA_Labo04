@@ -6,8 +6,19 @@
 #define LABO_04_CONTROLLER_H
 
 
-class Controller {
+#include "../graphics/Field.h"
 
+class Controller {
+public:
+    Controller(unsigned size, unsigned humans, unsigned vampires);
+    void run();
+private:
+    const unsigned SIZE;
+    const unsigned HUMANS;
+    const unsigned VAMPIRES;
+    const Field field;
+
+    void display();
 };
 
 

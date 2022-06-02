@@ -1,5 +1,6 @@
 #include <iostream>
 #include "graphics/Field.h"
+#include "controller/Controller.h"
 
 bool debug = true;
 
@@ -27,6 +28,9 @@ int main(int argc, char *argv[]) {
              << "vampire amount : " << vampireAmount << endl;
     }
 
+    Controller c((unsigned)fieldSize, (unsigned)humanAmount, (unsigned)vampireAmount);
+    c.run();
+    
     Field f(10, 40);
     f.fill();
     f.display();
