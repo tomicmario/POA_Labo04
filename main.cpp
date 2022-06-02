@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
     }
 
     Field f(10, 40);
-
+    f.fill();
     f.display();
 
     return EXIT_SUCCESS;
