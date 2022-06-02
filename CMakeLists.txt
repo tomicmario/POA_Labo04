@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.21)
+cmake_minimum_required(VERSION 3.16.5)
 project(Labo_04)
 
 set(CMAKE_CXX_STANDARD 11)
