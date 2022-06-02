@@ -14,7 +14,9 @@ class Humanoid;
 class Field {
 public:
     Field(unsigned int height, unsigned int width);
+    ~Field();
     void display() const;
+    void fill() const;
     void update() const;
     int nextTurn();
 private:
@@ -26,6 +28,8 @@ private:
 
     unsigned int turn;
     std::list<Humanoid*> humanoids;
+
+    char **values;
 };
 
 
