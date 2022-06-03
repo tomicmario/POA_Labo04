@@ -6,7 +6,7 @@
 #define LABO_04_VAMPIRE_HPP
 
 
-#include "Humanoid.h"
+#include "Humanoid.hpp"
 
 class Vampire : public Humanoid{
 public:

@@ -6,7 +6,7 @@
 #define LABO_04_HUMAN_HPP
 
 
-#include "Humanoid.h"
+#include "Humanoid.hpp"
 
 class Human : public Humanoid{
 public:

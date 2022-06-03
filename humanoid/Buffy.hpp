@@ -6,7 +6,7 @@
 #define LABO_04_BUFFY_HPP
 
 
-#include "Humanoid.h"
+#include "Humanoid.hpp"
 
 class Buffy : public Humanoid {
 public:

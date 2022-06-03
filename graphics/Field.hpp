@@ -7,7 +7,8 @@
 
 
 #include <list>
-#include "../humanoid/Humanoid.h"
+
+#include "../humanoid/Humanoid.hpp"
 
 class Humanoid;
 
@@ -19,6 +20,8 @@ public:
     void fill() const;
     void update() const;
     int nextTurn();
+    Human* findNearestHuman(const Humanoid& searcher);
+    Vampire* findNearestVampire(const Humanoid& searcher);
 private:
     unsigned int height;
     unsigned int width;
@@ -30,6 +33,8 @@ private:
     std::list<Humanoid*> humanoids;
 
     char **values;
+
+    static double getDistance(unsigned x1, unsigned y1, unsigned x2, unsigned y2);
 };
 
 

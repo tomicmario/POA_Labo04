@@ -2,8 +2,8 @@
 // Created by ylang on 12.05.2022.
 //
 
-#ifndef LABO_04_HUMANOID_H
-#define LABO_04_HUMANOID_H
+#ifndef LABO_04_HUMANOID_HPP
+#define LABO_04_HUMANOID_HPP
 
 
 #include "../graphics/Field.hpp"
@@ -12,7 +12,7 @@ class Field;
 
 class Humanoid {
 public:
-    ~Humanoid();
+    virtual ~Humanoid();
     void setPosition();
     unsigned getX() const;
     unsigned getY() const;
@@ -39,4 +39,4 @@ protected:
 
 
 
-#endif //LABO_04_HUMANOID_H
+#endif //LABO_04_HUMANOID_HPP

@@ -3,8 +3,11 @@
 //
 
 #include "Field.hpp"
+#include "../humanoid/Human.hpp"
+#include "../humanoid/Vampire.hpp"
 #include <iostream>
 #include <iomanip>
+#include <cmath>
 
 using namespace std;
 
@@ -80,4 +83,40 @@ int Field::nextTurn()
         else
             ++it;
     return turn++;
+}
+
+Human* Field::findNearestHuman(const Humanoid& searcher) {
+    Human* closestHuman = nullptr;
+    double distance = height * width;
+    for (list<Humanoid*>::iterator it = humanoids.begin(); it != humanoids.end(); it++) {
+        Human* currentClosestHuman;
+        if ((currentClosestHuman = dynamic_cast<Human*>(*it)) != nullptr) {
+            double currentDistance = getDistance(searcher.getX(), searcher.getY(), (*it)->getX(), (*it)->getY());
+            if(currentDistance < distance){
+                closestHuman = currentClosestHuman;
+                distance = currentDistance;
+            }
+        }
+    }
+    return closestHuman;
+}
+
+Vampire* Field::findNearestVampire(const Humanoid& searcher) {
+    Vampire* closestVampire = nullptr;
+    double distance = height * width;
+    for (list<Humanoid*>::iterator it = humanoids.begin(); it != humanoids.end(); it++) {
+        Vampire* currentClosestVampire;
+        if ((currentClosestVampire = dynamic_cast<Vampire*>(*it)) != nullptr) {
+            double currentDistance = getDistance(searcher.getX(), searcher.getY(), (*it)->getX(), (*it)->getY());
+            if(currentDistance < distance){
+                closestVampire = currentClosestVampire;
+                distance = currentDistance;
+            }
+        }
+    }
+    return closestVampire;
+}
+
+double Field::getDistance(unsigned x1, unsigned y1, unsigned x2, unsigned y2) {
+    return std::sqrt( (x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1) );
 }

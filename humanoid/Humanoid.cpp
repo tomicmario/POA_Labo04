@@ -2,7 +2,7 @@
 // Created by ylang on 12.05.2022.
 //
 
-#include "Humanoid.h"
+#include "Humanoid.hpp"
 
 unsigned int Humanoid::staticId = 0;
 
