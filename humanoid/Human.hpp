@@ -8,12 +8,12 @@
 
 #include "Humanoid.hpp"
 
-class Human : public Humanoid{
+class Human : public Humanoid {
 public:
     Human();
+    void setAction(Field& field) override;
+    char getSymbol() const override;
 private:
-    unsigned int id;
-    static unsigned int staticId;
     static const char SYMBOL = 'h';
 };
 

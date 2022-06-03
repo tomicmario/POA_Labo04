@@ -4,31 +4,41 @@
 
 #include "Humanoid.hpp"
 
-unsigned int Humanoid::staticId = 0;
 
-Humanoid::Humanoid(char symbol)
-: id(staticId++), alive(true), SYMBOL(symbol) {
-
-}
-
-void Humanoid::setPosition(){
-    this->x = 0;
-    this->y = 0;
-}
-
-void Humanoid::executeAction(Field field) {
+Humanoid::Humanoid()
+: alive(true) {
 
 }
-void Humanoid::setAction(Field field) {
 
+
+void Humanoid::executeAction(Field& field) {
+    auto wp = ac.lock();
+    if(wp != nullptr){
+        wp->execute(field);
+    }
 }
+
 
 bool Humanoid::isAlive() const{
     return alive;
 }
 
-char Humanoid::getSymbol() const{
-    return SYMBOL;
+
+unsigned Humanoid::getX() const {
+    return x;
+}
+
+unsigned Humanoid::getY() const {
+    return y;
+}
+
+unsigned Humanoid::getSpeed() const {
+    return speed;
+}
+
+void Humanoid::setPosition(unsigned x, unsigned y) {
+    this->x = x;
+    this->y = y;
 }
 
 Humanoid::~Humanoid() = default;

@@ -1,5 +1,5 @@
 #include "Action.hpp"
 
-Action::Action(const Humanoid& humanoid) : humanoid(&humanoid){
+Action::Action(const Humanoid& humanoid) : humanoid(){
 
 }

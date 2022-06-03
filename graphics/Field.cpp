@@ -69,29 +69,29 @@ void Field::update() const{
 int Field::nextTurn()
 {
     // Déterminer les prochaines actions
-    for (list<Humanoid*>::iterator it = humanoids.begin(); it != humanoids.end(); it++)
-        (*it)->setAction(*this);
+    for (auto it = humanoids.begin(); it != humanoids.end(); it++)
+        it->get()->setAction(*this);
     // Executer les actions
-    for (list<Humanoid*>::iterator it = humanoids.begin(); it != humanoids.end(); it++)
-        (*it)->executeAction(*this);
+    for (auto it = humanoids.begin(); it != humanoids.end(); it++)
+        it->get()->executeAction(*this);
     // Enlever les humanoides tués
-    for (list<Humanoid*>::iterator it = humanoids.begin(); it != humanoids.end(); )
-        if (!(*it)->isAlive()) {
+    for (auto it = humanoids.begin(); it != humanoids.end(); )
+        if (!it->get()->isAlive()) {
             it = humanoids.erase(it); // suppression de l’élément dans la liste
-            delete *it; // destruction de l’humanoide référencé
         }
         else
             ++it;
     return turn++;
 }
 
-Human* Field::findNearestHuman(const Humanoid& searcher) {
-    Human* closestHuman = nullptr;
+/*
+std::shared_ptr<Human> Field::findNearestHuman(const shared_ptr<Humanoid>& searcher) {
+    std::shared_ptr<Human> closestHuman = nullptr;
     double distance = height * width;
-    for (list<Humanoid*>::iterator it = humanoids.begin(); it != humanoids.end(); it++) {
-        Human* currentClosestHuman;
-        if ((currentClosestHuman = dynamic_cast<Human*>(*it)) != nullptr) {
-            double currentDistance = getDistance(searcher.getX(), searcher.getY(), (*it)->getX(), (*it)->getY());
+    for (auto it = humanoids.begin(); it != humanoids.end(); it++) {
+        std::shared_ptr<Human> currentClosestHuman(dynamic_cast<Human*>(it->get()));
+        if (currentClosestHuman != nullptr) {
+            double currentDistance = getDistance(searcher->getX(), searcher->getY(), (*it)->getX(), (*it)->getY());
             if(currentDistance < distance){
                 closestHuman = currentClosestHuman;
                 distance = currentDistance;
@@ -100,22 +100,8 @@ Human* Field::findNearestHuman(const Humanoid& searcher) {
     }
     return closestHuman;
 }
+*/
 
-Vampire* Field::findNearestVampire(const Humanoid& searcher) {
-    Vampire* closestVampire = nullptr;
-    double distance = height * width;
-    for (list<Humanoid*>::iterator it = humanoids.begin(); it != humanoids.end(); it++) {
-        Vampire* currentClosestVampire;
-        if ((currentClosestVampire = dynamic_cast<Vampire*>(*it)) != nullptr) {
-            double currentDistance = getDistance(searcher.getX(), searcher.getY(), (*it)->getX(), (*it)->getY());
-            if(currentDistance < distance){
-                closestVampire = currentClosestVampire;
-                distance = currentDistance;
-            }
-        }
-    }
-    return closestVampire;
-}
 
 double Field::getDistance(unsigned x1, unsigned y1, unsigned x2, unsigned y2) {
     return std::sqrt( (x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1) );

@@ -7,6 +7,7 @@
 
 
 #include <list>
+#include <memory>
 
 #include "../humanoid/Humanoid.hpp"
 
@@ -20,8 +21,8 @@ public:
     void fill() const;
     void update() const;
     int nextTurn();
-    Human* findNearestHuman(const Humanoid& searcher);
-    Vampire* findNearestVampire(const Humanoid& searcher);
+    //std::shared_ptr<Human> findNearestHuman(const shared_ptr<Humanoid>& searcher);
+    //Vampire* findNearestVampire(const Humanoid& searcher);
 private:
     unsigned int height;
     unsigned int width;
@@ -30,7 +31,7 @@ private:
     const char CORNER_LIMITERS = '+';
 
     unsigned int turn;
-    std::list<Humanoid*> humanoids;
+    std::list<std::shared_ptr<Humanoid>> humanoids;
 
     char **values;
 

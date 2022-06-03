@@ -7,34 +7,35 @@
 
 
 #include "../graphics/Field.hpp"
+#include <memory>
+#include "../controller/Action.hpp"
 
 class Field;
+class Action;
 
-class Humanoid {
+class Humanoid : public std::enable_shared_from_this<Humanoid> {
 public:
+    Humanoid();
     virtual ~Humanoid();
-    void setPosition();
+    void setPosition(unsigned x, unsigned y);
     unsigned getX() const;
     unsigned getY() const;
     unsigned getSpeed() const;
 
-    void executeAction(Field field);
+    void executeAction(Field& field);
 
-    void setAction(Field field);
+    virtual void setAction(Field& field) = 0;
 
     bool isAlive() const;
-    char getSymbol() const;
+    virtual char getSymbol() const = 0;
 
 protected:
-    Humanoid(char symbol);
     unsigned x;
     unsigned y;
     unsigned speed;
-    unsigned int id;
-    static unsigned int staticId;
-    bool alive;
-    const char SYMBOL;
 
+    bool alive;
+    std::weak_ptr<Action> ac;
 };
 
 

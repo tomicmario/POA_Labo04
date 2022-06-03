@@ -11,12 +11,13 @@
 class Vampire : public Humanoid{
 public:
     Vampire(unsigned int speed);
+    void setAction(Field& field) override;
+    char getSymbol() const override;
 private:
     unsigned int id;
-    static unsigned int staticId;
     static const char SYMBOL = 'V';
 };
-unsigned int Vampire::staticId = 0;
+
 
 
 #endif //LABO_04_VAMPIRE_HPP

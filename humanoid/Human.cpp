@@ -4,6 +4,14 @@
 
 #include "Human.hpp"
 
-Human::Human(): Humanoid(SYMBOL) {
+Human::Human(): Humanoid() {
 
+}
+
+void Human::setAction(Field &field) {
+    x++;
+}
+
+char Human::getSymbol() const {
+    return SYMBOL;
 }

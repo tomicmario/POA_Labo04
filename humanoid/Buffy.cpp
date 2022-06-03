@@ -4,6 +4,14 @@
 
 #include "Buffy.hpp"
 
-Buffy::Buffy(): Humanoid(SYMBOL) {
+Buffy::Buffy(): Humanoid() {
 
+}
+
+void Buffy::setAction(Field &field) {
+    x++;
+}
+
+char Buffy::getSymbol() const {
+    return SYMBOL;
 }
