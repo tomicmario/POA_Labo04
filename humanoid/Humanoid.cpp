@@ -31,4 +31,6 @@ char Humanoid::getSymbol() const{
     return SYMBOL;
 }
 
+Humanoid::~Humanoid() = default;
+
 

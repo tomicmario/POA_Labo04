@@ -2,8 +2,8 @@
 // Created by ylang on 12.05.2022.
 //
 
-#ifndef LABO_04_VAMPIRE_H
-#define LABO_04_VAMPIRE_H
+#ifndef LABO_04_VAMPIRE_HPP
+#define LABO_04_VAMPIRE_HPP
 
 
 #include "Humanoid.h"
@@ -19,4 +19,4 @@ private:
 unsigned int Vampire::staticId = 0;
 
 
-#endif //LABO_04_VAMPIRE_H
+#endif //LABO_04_VAMPIRE_HPP

@@ -2,8 +2,8 @@
 // Created by ylang on 12.05.2022.
 //
 
-#ifndef LABO_04_HUMAN_H
-#define LABO_04_HUMAN_H
+#ifndef LABO_04_HUMAN_HPP
+#define LABO_04_HUMAN_HPP
 
 
 #include "Humanoid.h"
@@ -18,4 +18,4 @@ private:
 };
 
 
-#endif //LABO_04_HUMAN_H
+#endif //LABO_04_HUMAN_HPP

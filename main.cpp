@@ -1,6 +1,6 @@
 #include <iostream>
-#include "graphics/Field.h"
-#include "controller/Controller.h"
+#include "graphics/Field.hpp"
+#include "controller/Controller.hpp"
 
 bool debug = true;
 

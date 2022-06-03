@@ -6,12 +6,13 @@
 #define LABO_04_HUMANOID_H
 
 
-#include "../graphics/Field.h"
+#include "../graphics/Field.hpp"
 
 class Field;
 
 class Humanoid {
 public:
+    ~Humanoid();
     void setPosition();
     unsigned getX() const;
     unsigned getY() const;

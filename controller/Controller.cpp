@@ -1,4 +1,4 @@
-#include "Controller.h"
+#include "Controller.hpp"
 
 Controller::Controller(unsigned size, unsigned humans, unsigned vampires) :
     SIZE(size), HUMANS(humans), VAMPIRES(vampires), field(size, size), round(0){

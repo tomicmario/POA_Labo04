@@ -1,8 +1,8 @@
-#ifndef LABO_04_CONTROLLER_H
-#define LABO_04_CONTROLLER_H
+#ifndef LABO_04_CONTROLLER_HPP
+#define LABO_04_CONTROLLER_HPP
 
 
-#include "../graphics/Field.h"
+#include "../graphics/Field.hpp"
 #include <iostream>
 
 /**
@@ -26,4 +26,4 @@ private:
 };
 
 
-#endif //LABO_04_CONTROLLER_H
+#endif //LABO_04_CONTROLLER_HPP

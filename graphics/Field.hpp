@@ -2,8 +2,8 @@
 // Created by ylang on 12.05.2022.
 //
 
-#ifndef LABO_04_FIELD_H
-#define LABO_04_FIELD_H
+#ifndef LABO_04_FIELD_HPP
+#define LABO_04_FIELD_HPP
 
 
 #include <list>
@@ -33,4 +33,4 @@ private:
 };
 
 
-#endif //LABO_04_FIELD_H
+#endif //LABO_04_FIELD_HPP
