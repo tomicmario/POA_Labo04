@@ -6,10 +6,8 @@
 #define LABO_04_HUMANOID_HPP
 
 
-#include "../graphics/Field.hpp"
 #include <memory>
 #include "../controller/Action.hpp"
-
 class Field;
 class Action;
 

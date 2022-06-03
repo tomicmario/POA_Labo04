@@ -84,7 +84,7 @@ int Field::nextTurn()
     return turn++;
 }
 
-/*
+
 std::shared_ptr<Human> Field::findNearestHuman(const shared_ptr<Humanoid>& searcher) {
     std::shared_ptr<Human> closestHuman = nullptr;
     double distance = height * width;
@@ -100,7 +100,7 @@ std::shared_ptr<Human> Field::findNearestHuman(const shared_ptr<Humanoid>& searc
     }
     return closestHuman;
 }
-*/
+
 
 
 double Field::getDistance(unsigned x1, unsigned y1, unsigned x2, unsigned y2) {

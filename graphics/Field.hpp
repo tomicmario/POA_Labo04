@@ -10,8 +10,7 @@
 #include <memory>
 
 #include "../humanoid/Humanoid.hpp"
-
-class Humanoid;
+#include "../humanoid/Human.hpp"
 
 class Field {
 public:
@@ -21,7 +20,7 @@ public:
     void fill() const;
     void update() const;
     int nextTurn();
-    //std::shared_ptr<Human> findNearestHuman(const shared_ptr<Humanoid>& searcher);
+    std::shared_ptr<Human> findNearestHuman(const std::shared_ptr<Humanoid>& searcher);
     //Vampire* findNearestVampire(const Humanoid& searcher);
 private:
     unsigned int height;

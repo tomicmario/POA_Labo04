@@ -2,8 +2,6 @@
 #define LABO_04_ACTION_HPP
 
 
-#include "../graphics/Field.hpp"
-#include "../humanoid/Humanoid.hpp"
 #include <memory>
 class Humanoid;
 class Field;
