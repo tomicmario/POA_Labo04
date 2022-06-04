@@ -3,6 +3,7 @@
 
 
 #include <memory>
+#include "../humanoid/Humanoid.hpp"
 class Humanoid;
 class Field;
 /**
@@ -13,9 +14,9 @@ class Action {
 public:
     virtual ~Action() = default;
     virtual void execute(Field& field) = 0;
-    explicit Action(const std::shared_ptr<Humanoid>& humanoid);
+    Action(const std::shared_ptr<Humanoid>& humanoid);
 protected:
-    std::weak_ptr<Humanoid> humanoid;
+    std::weak_ptr<Humanoid> currentHumanoid;
 };
 
 

@@ -15,6 +15,7 @@ public:
     void run();
 private:
     double stats = 0.0;
+    const unsigned SIMULATIONS_AMOUNT = 10000;
     Field field;
     unsigned round;
     void display();

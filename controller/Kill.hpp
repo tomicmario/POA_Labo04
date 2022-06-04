@@ -9,7 +9,7 @@
  */
 class Kill : public Action {
 public:
-    explicit Kill(const std::shared_ptr<Humanoid>& humanoid);
+    Kill(const std::shared_ptr<Humanoid>& humanoid);
     void execute(Field& field) override;
 };
 

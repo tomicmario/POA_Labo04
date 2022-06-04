@@ -79,7 +79,7 @@ int Field::nextTurn()
 }
 
 
-std::shared_ptr<Human> Field::findNearestHuman(const shared_ptr<Humanoid>& searcher) {
+std::shared_ptr<Human> Field::findNearestHuman(const shared_ptr<Humanoid>& searcher) const {
     std::shared_ptr<Human> closestHuman = nullptr;
     double distance = HEIGHT * WIDTH;
     for (auto it = humanoids.begin(); it != humanoids.end(); it++) {
@@ -95,7 +95,7 @@ std::shared_ptr<Human> Field::findNearestHuman(const shared_ptr<Humanoid>& searc
     return closestHuman;
 }
 
-std::shared_ptr<Vampire> Field::findNearestVampire(const shared_ptr<Humanoid>& searcher) {
+std::shared_ptr<Vampire> Field::findNearestVampire(const shared_ptr<Humanoid>& searcher) const{
     std::shared_ptr<Vampire> closestVampire = nullptr;
     double distance = HEIGHT * WIDTH;
     for (auto it = humanoids.begin(); it != humanoids.end(); it++) {
@@ -133,8 +133,8 @@ void Field::initialise() {
     humanoids.clear();
     vampires = 0;
     humans = 0;
-    generateHumans(HUMANS);
-    generateVampires(VAMPIRES);
+    generateHumans(1);//HUMANS);
+    generateVampires(1);//VAMPIRES);
 }
 
 void Field::clearDisplay() {
@@ -152,6 +152,14 @@ void Field::initialiseDisplay() {
     for(size_t i = 0; i < HEIGHT; ++i){
         values[i] = new char[WIDTH];
     }
+}
+
+unsigned Field::getVampiresLeft() {
+    return vampires;
+}
+
+unsigned Field::getHumansLeft() {
+    return humans;
 }
 
 

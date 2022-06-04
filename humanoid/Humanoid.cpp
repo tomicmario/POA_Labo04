@@ -40,6 +40,10 @@ void Humanoid::setPosition(unsigned x, unsigned y) {
     this->y = y;
 }
 
+void Humanoid::setAlive(bool alive) {
+    this->alive = alive;
+}
+
 Humanoid::~Humanoid() = default;
 
 

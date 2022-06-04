@@ -26,7 +26,7 @@ public:
 
     bool isAlive() const;
     virtual char getSymbol() const = 0;
-
+    void setAlive(bool alive);
 protected:
     unsigned x;
     unsigned y;

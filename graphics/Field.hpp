@@ -16,9 +16,11 @@ public:
     void display();
     void update() const;
     int nextTurn();
-    std::shared_ptr<Human> findNearestHuman(const std::shared_ptr<Humanoid>& searcher);
-    std::shared_ptr<Vampire> findNearestVampire(const std::shared_ptr<Humanoid>& searcher);
+    std::shared_ptr<Human> findNearestHuman(const std::shared_ptr<Humanoid>& searcher) const;
+    std::shared_ptr<Vampire> findNearestVampire(const std::shared_ptr<Humanoid>& searcher) const;
     void initialise();
+    unsigned getVampiresLeft();
+    unsigned getHumansLeft();
 private:
     void fill();
     void generateVampires(unsigned amount);
