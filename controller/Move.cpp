@@ -1,6 +1,6 @@
 #include "Move.hpp"
 #include <cmath>
-
+#include <iostream>
 
 void Move::execute(Field &field) {
     auto h = currentHumanoid.lock();
@@ -10,7 +10,7 @@ void Move::execute(Field &field) {
 }
 
 Move::Move(const std::shared_ptr<Humanoid> &humanoid, unsigned int desiredX, unsigned int desiredY): Action(humanoid) {
-    double angle = atan2(humanoid->getY() - desiredY, humanoid->getX() - desiredX) - M_PI / 4;
-    speedX = round(humanoid->getSpeed() * cos(angle) - humanoid->getSpeed() * sin(angle));
-    speedY = round(humanoid->getSpeed() * sin(angle) + humanoid->getSpeed() * cos(angle));
+    double angle = atan2((int)desiredY - (int)humanoid->getY(), (int)desiredX - (int)humanoid->getX());
+    speedX = humanoid->getX() != desiredX ? round(humanoid->getSpeed() * cos(angle)) : 0;
+    speedY = humanoid->getY() != desiredY ? round(humanoid->getSpeed() * sin(angle)) : 0;
 }

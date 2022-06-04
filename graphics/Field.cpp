@@ -63,16 +63,7 @@ unsigned Field::nextTurn()
     // Enlever les humanoides tués
     for (auto it = humanoids.begin(); it != humanoids.end(); )
         if (!it->get()->isAlive()) {
-            std::shared_ptr<Human> current(dynamic_cast<Human*>(it->get()));
-            if(current != nullptr){
-                humans--;
-            }
-            else {
-                vampires--;
-            }
-
             it = humanoids.erase(it); // suppression de l’élément dans la liste
-
         }
         else
             ++it;
@@ -134,8 +125,9 @@ void Field::initialise() {
     vampires = 0;
     humans = 0;
     turn = 0;
-    generateHumans(1);//HUMANS);
     generateVampires(1);//VAMPIRES);
+    generateHumans(1);//HUMANS);
+
 }
 
 void Field::clearDisplay() {
@@ -170,12 +162,10 @@ Field::nearestX(const shared_ptr<Humanoid>& searcher, function<bool (shared_ptr<
     for (const std::shared_ptr<Humanoid>& it : humanoids) {
         if (func(it)) {
             std::shared_ptr<Humanoid> currentClosest(it);
-            cout << it.use_count() << endl;
             double currentDistance = util::getDistance(currentClosest, searcher);
             if(currentDistance < distance){
                 closestHuman = currentClosest;
                 distance = currentDistance;
-                cout << it.use_count() << endl;
             }
         }
     }

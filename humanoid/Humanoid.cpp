@@ -35,9 +35,9 @@ unsigned Humanoid::getSpeed() const {
     return speed;
 }
 
-void Humanoid::setPosition(unsigned x, unsigned y) {
-    this->x = x;
-    this->y = y;
+void Humanoid::setPosition(unsigned newx, unsigned newy) {
+    this->x = newx;
+    this->y = newy;
 }
 
 void Humanoid::setAlive(bool alive) {

@@ -7,7 +7,7 @@ Kill::Kill(const std::shared_ptr<Humanoid>& humanoid) : Action(humanoid) {
 
 void Kill::execute(Field& field) {
     auto ptr = currentHumanoid.lock();
-    if(ptr != nullptr){
+    if(ptr){
         ptr->setAlive(false);
     }
 }
