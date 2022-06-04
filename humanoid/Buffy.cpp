@@ -3,13 +3,15 @@
 //
 
 #include "Buffy.hpp"
+#include "../graphics/Field.hpp"
 
 Buffy::Buffy(): Humanoid() {
 
 }
 
 void Buffy::setAction(Field &field) {
-    x++;
+
+
 }
 
 char Buffy::getSymbol() const {

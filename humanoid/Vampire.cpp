@@ -3,13 +3,24 @@
 //
 
 #include "Vampire.hpp"
+#include "../graphics/Field.hpp"
+#include "../controller/util.hpp"
+#include "../controller/Kill.hpp"
 
-Vampire::Vampire(unsigned int speed) : Humanoid()
+Vampire::Vampire() : Humanoid()
 
 {}
 
 void Vampire::setAction(Field &field) {
-    x++;
+    std::shared_ptr<Human> human(field.findNearestHuman(shared_from_this()));
+    if(human != nullptr){
+        if(util::getDistance(shared_from_this(), human) >= 2){
+            // set move
+        }
+        else {
+            ac = std::make_shared<Kill>(human);
+        }
+    }
 }
 
 char Vampire::getSymbol() const {

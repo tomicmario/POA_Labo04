@@ -8,7 +8,8 @@
  * @brief Moving action
  */
 class Kill : public Action {
-    explicit Kill(const Humanoid& humanoid);
+public:
+    explicit Kill(const std::shared_ptr<Humanoid>& humanoid);
     void execute(Field& field) override;
 };
 

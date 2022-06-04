@@ -11,6 +11,7 @@
 
 #include "../humanoid/Humanoid.hpp"
 #include "../humanoid/Human.hpp"
+#include "../humanoid/Vampire.hpp"
 
 class Field {
 public:
@@ -21,7 +22,8 @@ public:
     void update() const;
     int nextTurn();
     std::shared_ptr<Human> findNearestHuman(const std::shared_ptr<Humanoid>& searcher);
-    //Vampire* findNearestVampire(const Humanoid& searcher);
+    std::shared_ptr<Vampire> findNearestVampire(const std::shared_ptr<Humanoid>& searcher);
+
 private:
     unsigned int height;
     unsigned int width;

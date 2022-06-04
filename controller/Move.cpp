@@ -1,6 +1,6 @@
 #include "Move.hpp"
 
-Move::Move(const Humanoid& humanoid) : Action(humanoid) {
+Move::Move(const std::shared_ptr<Humanoid>& humanoid) : Action(humanoid) {
 
 }
 

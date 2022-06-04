@@ -13,7 +13,7 @@ class Action {
 public:
     virtual ~Action() = default;
     virtual void execute(Field& field) = 0;
-    explicit Action(const Humanoid& humanoid);
+    explicit Action(const std::shared_ptr<Humanoid>& humanoid);
 protected:
     std::weak_ptr<Humanoid> humanoid;
 };

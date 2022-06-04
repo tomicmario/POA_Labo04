@@ -5,6 +5,7 @@
 #include "Field.hpp"
 #include "../humanoid/Human.hpp"
 #include "../humanoid/Vampire.hpp"
+#include "../controller/util.hpp"
 #include <iostream>
 #include <iomanip>
 #include <cmath>
@@ -91,7 +92,7 @@ std::shared_ptr<Human> Field::findNearestHuman(const shared_ptr<Humanoid>& searc
     for (auto it = humanoids.begin(); it != humanoids.end(); it++) {
         std::shared_ptr<Human> currentClosestHuman(dynamic_cast<Human*>(it->get()));
         if (currentClosestHuman != nullptr) {
-            double currentDistance = getDistance(searcher->getX(), searcher->getY(), (*it)->getX(), (*it)->getY());
+            double currentDistance = util::getDistance(currentClosestHuman, searcher);
             if(currentDistance < distance){
                 closestHuman = currentClosestHuman;
                 distance = currentDistance;
@@ -101,8 +102,20 @@ std::shared_ptr<Human> Field::findNearestHuman(const shared_ptr<Humanoid>& searc
     return closestHuman;
 }
 
-
-
-double Field::getDistance(unsigned x1, unsigned y1, unsigned x2, unsigned y2) {
-    return std::sqrt( (x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1) );
+std::shared_ptr<Vampire> Field::findNearestVampire(const shared_ptr<Humanoid>& searcher) {
+    std::shared_ptr<Vampire> closestVampire = nullptr;
+    double distance = height * width;
+    for (auto it = humanoids.begin(); it != humanoids.end(); it++) {
+        std::shared_ptr<Vampire> currentClosestVampire(dynamic_cast<Vampire*>(it->get()));
+        if (currentClosestVampire != nullptr) {
+            double currentDistance = util::getDistance(currentClosestVampire, searcher);
+            if(currentDistance < distance){
+                closestVampire = currentClosestVampire;
+                distance = currentDistance;
+            }
+        }
+    }
+    return closestVampire;
 }
+
+

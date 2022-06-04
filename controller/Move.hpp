@@ -14,7 +14,7 @@
  */
 class Move : public Action{
 public:
-    explicit Move(const Humanoid& humanoid);
+    explicit Move(const std::shared_ptr<Humanoid>& humanoid);
     void execute(Field& field) override;
 };
 

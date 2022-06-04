@@ -33,7 +33,7 @@ protected:
     unsigned speed;
 
     bool alive;
-    std::weak_ptr<Action> ac;
+    std::shared_ptr<Action> ac;
 };
 
 
