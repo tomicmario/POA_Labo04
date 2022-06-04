@@ -5,8 +5,8 @@
 #include "Humanoid.hpp"
 
 
-Humanoid::Humanoid(unsigned x, unsigned y)
-: alive(true), x(x), y(y) {
+Humanoid::Humanoid(unsigned x, unsigned y, unsigned speed)
+: alive(true), x(x), y(y), speed(speed) {
 
 }
 

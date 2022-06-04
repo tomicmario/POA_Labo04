@@ -4,13 +4,17 @@
 
 #include "Human.hpp"
 #include "../controller/Move.hpp"
+#include "../controller/util.hpp"
+#include "../graphics/Field.hpp"
 
 Human::Human(unsigned x, unsigned y): Humanoid(x,y){
 
 }
 
 void Human::setAction(Field &field) {
-    ac = std::make_shared<Move>(shared_from_this());
+    unsigned randomX = util::getRandomUnsigned(0, field.getWidth());
+    unsigned randomY = util::getRandomUnsigned(0, field.getHeight());
+    ac = std::make_shared<Move>(shared_from_this(), randomX, randomY);
 }
 
 char Human::getSymbol() const {

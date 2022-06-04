@@ -13,7 +13,7 @@ class Action;
 
 class Humanoid : public std::enable_shared_from_this<Humanoid> {
 public:
-    Humanoid(unsigned x, unsigned y);
+    Humanoid(unsigned x, unsigned y, unsigned speed = 1);
     virtual ~Humanoid();
     void setPosition(unsigned x, unsigned y);
     unsigned getX() const;

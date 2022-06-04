@@ -22,8 +22,11 @@ void Vampire::setAction(Field &field) {
         if(distance <= 1.0){
             ac = std::make_shared<Kill>(human);
         } else  {
-            ac = std::make_shared<Move>(shared_from_this());
+            ac = std::make_shared<Move>(shared_from_this(), human->getX(), human->getY());
         }
+    }
+    else {
+        ac = std::make_shared<Move>(shared_from_this(), x, y);
     }
 }
 

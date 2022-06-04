@@ -22,6 +22,8 @@ public:
     void initialise();
     unsigned getVampiresLeft();
     unsigned getHumansLeft();
+    unsigned getWidth() const;
+    unsigned getHeight() const;
 private:
     void fill();
     void generateVampires(unsigned amount);

@@ -5,7 +5,7 @@
 #include "Buffy.hpp"
 #include "../graphics/Field.hpp"
 
-Buffy::Buffy(unsigned x, unsigned y): Humanoid(x,y) {
+Buffy::Buffy(unsigned x, unsigned y): Humanoid(x,y, 2) {
 
 }
 

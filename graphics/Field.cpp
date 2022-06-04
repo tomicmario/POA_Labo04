@@ -182,5 +182,13 @@ Field::nearestX(const shared_ptr<Humanoid>& searcher, function<bool (shared_ptr<
     return closestHuman;
 }
 
+unsigned Field::getWidth() const {
+    return WIDTH;
+}
+
+unsigned Field::getHeight() const {
+    return HEIGHT;
+}
+
 
 
