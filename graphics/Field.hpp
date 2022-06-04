@@ -23,10 +23,12 @@ private:
     void fill();
     void generateVampires(unsigned amount);
     void generateHumans(unsigned amount);
-    unsigned height;
-    unsigned width;
-    unsigned vampires;
+    const unsigned HEIGHT;
+    const unsigned WIDTH;
+    const unsigned VAMPIRES;
+    const unsigned HUMANS;
     unsigned humans;
+    unsigned vampires;
     const char LEFT_RIGHT_LIMITERS = '|';
     const char TOP_BOTTOM_LIMITERS = '-';
     const char CORNER_LIMITERS = '+';
