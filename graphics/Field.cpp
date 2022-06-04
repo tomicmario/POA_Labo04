@@ -189,6 +189,14 @@ unsigned Field::getHeight() const {
     return HEIGHT;
 }
 
+void Field::humanKilled() {
+    humans--;
+}
+
+void Field::vampireKilled() {
+    vampires--;
+}
+
 
 
 

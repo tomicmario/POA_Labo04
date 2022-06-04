@@ -38,6 +38,7 @@ void Controller::display() {
         std::cout << "Success rate : " << stats << "%" << std::endl;
     }
     std::cout << std::endl;
+    std::cout << "humans : " << field.getHumansLeft() << "  vampires : " << field.getVampiresLeft() << std::endl;
 }
 
 void Controller::nextFrame() {
