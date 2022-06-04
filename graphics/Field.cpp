@@ -4,6 +4,9 @@
 
 #include "Field.hpp"
 #include "../controller/util.hpp"
+#include "../humanoid/Human.hpp"
+#include "../humanoid/Vampire.hpp"
+#include "../humanoid/Buffy.hpp"
 #include <iostream>
 #include <iomanip>
 #include <cmath>
@@ -120,14 +123,20 @@ void Field::generateHumans(unsigned amount) {
     }
 }
 
+void Field::generateBuffy() {
+    unsigned x = util::getRandomUnsigned(0, WIDTH);
+    unsigned y = util::getRandomUnsigned(0, HEIGHT);
+    humanoids.push_back(std::make_shared<Buffy>(x, y));
+}
+
 void Field::initialise() {
     humanoids.clear();
     vampires = 0;
     humans = 0;
     turn = 0;
-    generateVampires(1);//VAMPIRES);
-    generateHumans(1);//HUMANS);
-
+    generateVampires(2);//VAMPIRES);
+    generateHumans(10);//HUMANS);
+    generateBuffy();
 }
 
 void Field::clearDisplay() {
@@ -179,6 +188,8 @@ unsigned Field::getWidth() const {
 unsigned Field::getHeight() const {
     return HEIGHT;
 }
+
+
 
 
 

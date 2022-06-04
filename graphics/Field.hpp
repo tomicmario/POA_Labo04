@@ -7,8 +7,6 @@
 #include <functional>
 
 #include "../humanoid/Humanoid.hpp"
-#include "../humanoid/Human.hpp"
-#include "../humanoid/Vampire.hpp"
 
 class Field {
 public:
@@ -28,6 +26,7 @@ private:
     void fill();
     void generateVampires(unsigned amount);
     void generateHumans(unsigned amount);
+    void generateBuffy();
     const unsigned HEIGHT;
     const unsigned WIDTH;
     const unsigned VAMPIRES;
