@@ -79,16 +79,18 @@ int Field::nextTurn()
 }
 
 
-std::shared_ptr<Human> Field::findNearestHuman(const shared_ptr<Humanoid>& searcher) const {
-    std::shared_ptr<Human> closestHuman = nullptr;
+std::shared_ptr<Humanoid> Field::findNearestHuman(const shared_ptr<Humanoid>& searcher) const {
+    std::shared_ptr<Humanoid> closestHuman;
     double distance = HEIGHT * WIDTH;
-    for (auto it = humanoids.begin(); it != humanoids.end(); it++) {
-        std::shared_ptr<Human> currentClosestHuman(dynamic_cast<Human*>(it->get()));
-        if (currentClosestHuman != nullptr) {
-            double currentDistance = util::getDistance(currentClosestHuman, searcher);
+    for (const std::shared_ptr<Humanoid>& it : humanoids) {
+        if (dynamic_cast<Human*>(it.get()) != nullptr) {
+            std::shared_ptr<Humanoid> currentClosest(it);
+            cout << it.use_count() << endl;
+            double currentDistance = util::getDistance(currentClosest, searcher);
             if(currentDistance < distance){
-                closestHuman = currentClosestHuman;
+                closestHuman = currentClosest;
                 distance = currentDistance;
+                cout << it.use_count() << endl;
             }
         }
     }
@@ -96,15 +98,18 @@ std::shared_ptr<Human> Field::findNearestHuman(const shared_ptr<Humanoid>& searc
 }
 
 std::shared_ptr<Vampire> Field::findNearestVampire(const shared_ptr<Humanoid>& searcher) const{
-    std::shared_ptr<Vampire> closestVampire = nullptr;
+    std::shared_ptr<Vampire> closestVampire;
     double distance = HEIGHT * WIDTH;
     for (auto it = humanoids.begin(); it != humanoids.end(); it++) {
+
         std::shared_ptr<Vampire> currentClosestVampire(dynamic_cast<Vampire*>(it->get()));
         if (currentClosestVampire != nullptr) {
             double currentDistance = util::getDistance(currentClosestVampire, searcher);
+            cout << it->use_count() << endl;
             if(currentDistance < distance){
                 closestVampire = currentClosestVampire;
                 distance = currentDistance;
+                cout << it->use_count() << endl;
             }
         }
     }
@@ -133,6 +138,7 @@ void Field::initialise() {
     humanoids.clear();
     vampires = 0;
     humans = 0;
+    turn = 0;
     generateHumans(1);//HUMANS);
     generateVampires(1);//VAMPIRES);
 }
