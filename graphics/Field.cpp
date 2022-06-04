@@ -7,6 +7,7 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
+#include <functional>
 
 using namespace std;
 
@@ -51,7 +52,7 @@ void Field::update() const{
 
 }
 
-int Field::nextTurn()
+unsigned Field::nextTurn()
 {
     // Déterminer les prochaines actions
     for (auto it = humanoids.begin(); it != humanoids.end(); it++)
@@ -75,11 +76,16 @@ int Field::nextTurn()
         }
         else
             ++it;
-    return turn++;
+    return ++turn;
 }
 
 
 std::shared_ptr<Humanoid> Field::findNearestHuman(const shared_ptr<Humanoid>& searcher) const {
+    std::function<bool (const std::shared_ptr<Humanoid>)> isHuman= [](const std::shared_ptr<Humanoid>& humanoid) {
+        return dynamic_cast<Human*>(humanoid.get()) != nullptr;
+    };
+    return nearestX(searcher,isHuman);
+    /*
     std::shared_ptr<Humanoid> closestHuman;
     double distance = HEIGHT * WIDTH;
     for (const std::shared_ptr<Humanoid>& it : humanoids) {
@@ -95,25 +101,14 @@ std::shared_ptr<Humanoid> Field::findNearestHuman(const shared_ptr<Humanoid>& se
         }
     }
     return closestHuman;
+    */
 }
 
-std::shared_ptr<Vampire> Field::findNearestVampire(const shared_ptr<Humanoid>& searcher) const{
-    std::shared_ptr<Vampire> closestVampire;
-    double distance = HEIGHT * WIDTH;
-    for (auto it = humanoids.begin(); it != humanoids.end(); it++) {
-
-        std::shared_ptr<Vampire> currentClosestVampire(dynamic_cast<Vampire*>(it->get()));
-        if (currentClosestVampire != nullptr) {
-            double currentDistance = util::getDistance(currentClosestVampire, searcher);
-            cout << it->use_count() << endl;
-            if(currentDistance < distance){
-                closestVampire = currentClosestVampire;
-                distance = currentDistance;
-                cout << it->use_count() << endl;
-            }
-        }
-    }
-    return closestVampire;
+std::shared_ptr<Humanoid> Field::findNearestVampire(const shared_ptr<Humanoid>& searcher) const {
+    std::function<bool (const std::shared_ptr<Humanoid>)> isVampire= [](const std::shared_ptr<Humanoid>& humanoid) {
+        return dynamic_cast<Vampire*>(humanoid.get()) != nullptr;
+    };
+    return nearestX(searcher,isVampire);
 }
 
 void Field::generateVampires(unsigned amount) {
@@ -167,5 +162,25 @@ unsigned Field::getVampiresLeft() {
 unsigned Field::getHumansLeft() {
     return humans;
 }
+
+std::shared_ptr<Humanoid>
+Field::nearestX(const shared_ptr<Humanoid>& searcher, function<bool (shared_ptr<Humanoid>)> func) const {
+    std::shared_ptr<Humanoid> closestHuman;
+    double distance = HEIGHT * WIDTH;
+    for (const std::shared_ptr<Humanoid>& it : humanoids) {
+        if (func(it)) {
+            std::shared_ptr<Humanoid> currentClosest(it);
+            cout << it.use_count() << endl;
+            double currentDistance = util::getDistance(currentClosest, searcher);
+            if(currentDistance < distance){
+                closestHuman = currentClosest;
+                distance = currentDistance;
+                cout << it.use_count() << endl;
+            }
+        }
+    }
+    return closestHuman;
+}
+
 
 

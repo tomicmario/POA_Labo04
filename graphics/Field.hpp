@@ -4,6 +4,7 @@
 
 #include <list>
 #include <memory>
+#include <functional>
 
 #include "../humanoid/Humanoid.hpp"
 #include "../humanoid/Human.hpp"
@@ -15,9 +16,9 @@ public:
     ~Field();
     void display();
     void update() const;
-    int nextTurn();
+    unsigned nextTurn();
     std::shared_ptr<Humanoid> findNearestHuman(const std::shared_ptr<Humanoid>& searcher) const;
-    std::shared_ptr<Vampire> findNearestVampire(const std::shared_ptr<Humanoid>& searcher) const;
+    std::shared_ptr<Humanoid> findNearestVampire(const std::shared_ptr<Humanoid>& searcher) const;
     void initialise();
     unsigned getVampiresLeft();
     unsigned getHumansLeft();
@@ -41,6 +42,9 @@ private:
     char **values;
     void clearDisplay();
     void initialiseDisplay();
+
+    std::shared_ptr<Humanoid>
+    nearestX(const std::shared_ptr<Humanoid> &searcher, std::function<bool(std::shared_ptr<Humanoid>)> func) const;
 };
 
 
