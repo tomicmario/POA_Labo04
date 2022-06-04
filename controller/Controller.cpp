@@ -35,7 +35,7 @@ void Controller::display() {
     field.display();
     std::cout << "[" << round << "] q)uit s)tatistics n)ext : ";
     if(stats != 0.0){
-        std::cout << "Success rate : " << stats << "%" << std::endl;
+        std::cout << "Success rate : " << stats * 100 << "%" << std::endl;
     }
     std::cout << std::endl;
     std::cout << "humans : " << field.getHumansLeft() << "  vampires : " << field.getVampiresLeft() << std::endl;

@@ -7,6 +7,10 @@ Kill::Kill(const std::shared_ptr<Humanoid>& humanoid) : Action(humanoid) {
 }
 
 void Kill::execute(Field& field) {
+    killHumanoid(field);
+}
+
+bool Kill::killHumanoid(Field& field) {
     std::shared_ptr<Humanoid> ptr = currentHumanoid.lock();
     if(ptr){
         if(ptr->isAlive()) {
@@ -16,8 +20,10 @@ void Kill::execute(Field& field) {
             } else {
                 field.humanKilled();
             }
+            return true;
         }
     }
+    return false;
 }
 
 

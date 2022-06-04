@@ -7,8 +7,8 @@ bool debug = true;
 using namespace std;
 
 int main(int argc, char *argv[]) {
-    int fieldSize = 10;
-    int humanAmount = 10;
+    int fieldSize = 50;
+    int humanAmount = 20;
     int vampireAmount = 10;
     if(!debug) {
         if (argc != 4) {

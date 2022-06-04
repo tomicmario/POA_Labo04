@@ -24,6 +24,7 @@ public:
     unsigned getHeight() const;
     void humanKilled();
     void vampireKilled();
+    void addVampire(unsigned x, unsigned y);
 private:
     void fill();
     void generateVampires(unsigned amount);

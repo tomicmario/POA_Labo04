@@ -5,7 +5,7 @@
 #include "Vampire.hpp"
 #include "../graphics/Field.hpp"
 #include "../controller/util.hpp"
-#include "../controller/Kill.hpp"
+#include "../controller/Transform.hpp"
 #include "../controller/Move.hpp"
 #include "Humanoid.hpp"
 
@@ -18,7 +18,7 @@ void Vampire::setAction(Field &field) {
     if(human != nullptr){
         double distance = util::getDistance(shared_from_this(), human);
         if(distance <= 1.0){
-            ac = std::make_shared<Kill>(human);
+            ac = std::make_shared<Transform>(human);
         } else  {
             ac = std::make_shared<Move>(shared_from_this(), human->getX(), human->getY());
         }

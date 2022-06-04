@@ -134,8 +134,8 @@ void Field::initialise() {
     vampires = 0;
     humans = 0;
     turn = 0;
-    generateVampires(2);//VAMPIRES);
-    generateHumans(10);//HUMANS);
+    generateVampires(VAMPIRES);
+    generateHumans(HUMANS);
     generateBuffy();
 }
 
@@ -195,6 +195,11 @@ void Field::humanKilled() {
 
 void Field::vampireKilled() {
     vampires--;
+}
+
+void Field::addVampire(unsigned x, unsigned y) {
+    humanoids.push_back(std::make_shared<Vampire>(x, y));
+    vampires++;
 }
 
 
