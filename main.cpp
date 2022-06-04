@@ -31,9 +31,5 @@ int main(int argc, char *argv[]) {
     Controller c((unsigned)fieldSize, (unsigned)humanAmount, (unsigned)vampireAmount);
     c.run();
 
-    Field f(10, 40);
-    f.fill();
-    f.display();
-
     return EXIT_SUCCESS;
 }

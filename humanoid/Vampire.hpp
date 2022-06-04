@@ -10,7 +10,7 @@
 
 class Vampire : public Humanoid{
 public:
-    Vampire();
+    Vampire(unsigned x, unsigned y);
     void setAction(Field& field) override;
     char getSymbol() const override;
 private:

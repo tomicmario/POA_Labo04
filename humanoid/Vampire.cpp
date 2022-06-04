@@ -7,9 +7,9 @@
 #include "../controller/util.hpp"
 #include "../controller/Kill.hpp"
 
-Vampire::Vampire() : Humanoid()
+Vampire::Vampire(unsigned x, unsigned y): Humanoid(x,y){
 
-{}
+}
 
 void Vampire::setAction(Field &field) {
     std::shared_ptr<Human> human(field.findNearestHuman(shared_from_this()));

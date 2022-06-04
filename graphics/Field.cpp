@@ -12,55 +12,42 @@
 
 using namespace std;
 
-Field::Field(unsigned int height, unsigned int width)
-:   height(height), width(width)
-{
-    values = new char*[height];
-    for(size_t i = 0; i < height; ++i){
-        values[i] = new char[width];
-    }
+Field::Field(unsigned height, unsigned width, unsigned humans, unsigned vampires)
+:   height(height), width(width), humans(humans), vampires(vampires), values(nullptr) {
+    generateVampires(vampires);
+    generateHumans(humans);
 }
+
 Field::~Field(){
-    if(values != nullptr) {
-        for (size_t i = 0; i < height; ++i) {
-            delete values[i];
-        }
-        delete[] values;
-    }
+    clearDisplay();
 }
-void Field::fill() const{
+
+void Field::fill() {
+    initialiseDisplay();
     for(size_t i  = 0; i < height; ++i){
         for(size_t j = 0; j < width; ++j){
-            if(i == 0 && j == 0 || i == 0 && j == width-1 ||
-            i == height-1 && j == 0 || i == height-1 && j == width-1){
-                values[i][j] = '+';
-            }
-            else if(i == 0 || i == height-1){
-                values[i][j] = '=';
-            }
-            else if(j == 0 || j == width-1){
-                values[i][j] = '|';
-            }
-            else {
                 values[i][j] = ' ';
-            }
-
         }
     }
-}
-void Field::display() const{
 
+    for(auto it = humanoids.begin(); it != humanoids.end(); ++it){
+        unsigned x = it->get()->getX();
+        unsigned y = it->get()->getY();
+        values[x][y] = it->get()->getSymbol();
+    }
+}
+void Field::display(){
+    fill();
+    cout << CORNER_LIMITERS << std::setfill (TOP_BOTTOM_LIMITERS) << std::setw (width) << CORNER_LIMITERS << std::endl;
     for(size_t i = 0; i < height; ++i){
+        cout << LEFT_RIGHT_LIMITERS;
         for(size_t j = 0; j < width; ++j){
             cout << values[i][j];
         }
+        cout << LEFT_RIGHT_LIMITERS;
         cout << endl;
     }
-    /*cout << CORNER_LIMITERS << setfill(TOP_BOTTOM_LIMITERS) << setw(width-2) << CORNER_LIMITERS << endl;
-    for(size_t i = 0; i < height; ++i){
-        cout << LEFT_RIGHT_LIMITERS << setfill(' ') << setw(width-2) << LEFT_RIGHT_LIMITERS << endl;
-    }
-    cout << CORNER_LIMITERS << setfill(TOP_BOTTOM_LIMITERS) << setw(width-2) << CORNER_LIMITERS << endl;*/
+    cout << CORNER_LIMITERS << std::setfill (TOP_BOTTOM_LIMITERS) << std::setw (width) << CORNER_LIMITERS << std::endl;
 }
 
 void Field::update() const{
@@ -116,6 +103,44 @@ std::shared_ptr<Vampire> Field::findNearestVampire(const shared_ptr<Humanoid>& s
         }
     }
     return closestVampire;
+}
+
+void Field::generateVampires(unsigned amount) {
+    for(unsigned i = 0; i < amount; ++i){
+        unsigned x = util::getRandomUnsigned(0, width);
+        unsigned y = util::getRandomUnsigned(0, height);
+        humanoids.push_back(std::make_shared<Vampire>(x, y));
+    }
+}
+
+void Field::generateHumans(unsigned amount) {
+    for(unsigned i = 0; i < amount; ++i){
+        unsigned x = util::getRandomUnsigned(0, width);
+        unsigned y = util::getRandomUnsigned(0, height);
+        humanoids.push_back(std::make_shared<Human>(x, y));
+    }
+}
+
+void Field::initialise() {
+    generateHumans(humans);
+    generateVampires(vampires);
+}
+
+void Field::clearDisplay() {
+    if(values != nullptr) {
+        for (size_t i = 0; i < height; ++i) {
+            delete values[i];
+        }
+        delete[] values;
+    }
+}
+
+void Field::initialiseDisplay() {
+    clearDisplay();
+    values = new char*[height];
+    for(size_t i = 0; i < height; ++i){
+        values[i] = new char[width];
+    }
 }
 
 

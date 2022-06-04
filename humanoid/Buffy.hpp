@@ -10,7 +10,7 @@
 
 class Buffy : public Humanoid {
 public:
-    Buffy();
+    Buffy(unsigned x, unsigned y);
     void setAction(Field& field) override;
     char getSymbol() const override;
 private:

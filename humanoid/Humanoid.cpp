@@ -5,16 +5,15 @@
 #include "Humanoid.hpp"
 
 
-Humanoid::Humanoid()
-: alive(true) {
+Humanoid::Humanoid(unsigned x, unsigned y)
+: alive(true), x(x), y(y) {
 
 }
 
 
 void Humanoid::executeAction(Field& field) {
-    auto wp = ac.lock();
-    if(wp != nullptr){
-        wp->execute(field);
+    if(ac != nullptr){
+        ac->execute(field);
     }
 }
 

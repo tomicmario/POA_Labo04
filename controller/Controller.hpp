@@ -14,11 +14,8 @@ public:
     Controller(unsigned size, unsigned humans, unsigned vampires);
     void run();
 private:
-    const unsigned SIZE;
-    const unsigned HUMANS;
-    const unsigned VAMPIRES;
     double stats = 0.0;
-    const Field field;
+    Field field;
     unsigned round;
     void display();
     void nextFrame();

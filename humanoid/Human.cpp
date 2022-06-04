@@ -4,7 +4,7 @@
 
 #include "Human.hpp"
 
-Human::Human(): Humanoid() {
+Human::Human(unsigned x, unsigned y): Humanoid(x,y){
 
 }
 
