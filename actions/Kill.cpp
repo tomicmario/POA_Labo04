@@ -1,6 +1,6 @@
 #include "Kill.hpp"
 #include "../humanoid/Vampire.hpp"
-#include "../graphics/Field.hpp"
+#include "../controller/Field.hpp"
 
 Kill::Kill(const std::shared_ptr<Humanoid>& humanoid) : Action(humanoid) {
 

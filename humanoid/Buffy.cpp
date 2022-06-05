@@ -3,10 +3,10 @@
 //
 
 #include "Buffy.hpp"
-#include "../graphics/Field.hpp"
+#include "../controller/Field.hpp"
 #include "../controller/util.hpp"
-#include "../controller/Kill.hpp"
-#include "../controller/Move.hpp"
+#include "../graphics/Kill.hpp"
+#include "../graphics/Move.hpp"
 #include "Humanoid.hpp"
 
 Buffy::Buffy(unsigned x, unsigned y): Humanoid(x,y, 2) {

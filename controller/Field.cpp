@@ -3,7 +3,7 @@
 //
 
 #include "Field.hpp"
-#include "../controller/util.hpp"
+#include "util.hpp"
 #include "../humanoid/Human.hpp"
 #include "../humanoid/Vampire.hpp"
 #include "../humanoid/Buffy.hpp"

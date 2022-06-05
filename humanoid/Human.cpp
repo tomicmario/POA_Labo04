@@ -3,9 +3,9 @@
 //
 
 #include "Human.hpp"
-#include "../controller/Move.hpp"
+#include "../graphics/Move.hpp"
 #include "../controller/util.hpp"
-#include "../graphics/Field.hpp"
+#include "../controller/Field.hpp"
 
 Human::Human(unsigned x, unsigned y): Humanoid(x,y){
 

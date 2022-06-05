@@ -7,7 +7,7 @@
 
 
 #include <memory>
-#include "../controller/Action.hpp"
+#include "../graphics/Action.hpp"
 class Field;
 class Action;
 

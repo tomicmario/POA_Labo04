@@ -3,10 +3,10 @@
 //
 
 #include "Vampire.hpp"
-#include "../graphics/Field.hpp"
+#include "../controller/Field.hpp"
 #include "../controller/util.hpp"
-#include "../controller/Transform.hpp"
-#include "../controller/Move.hpp"
+#include "../graphics/Transform.hpp"
+#include "../graphics/Move.hpp"
 #include "Humanoid.hpp"
 
 Vampire::Vampire(unsigned x, unsigned y): Humanoid(x,y){

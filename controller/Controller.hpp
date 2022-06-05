@@ -2,7 +2,7 @@
 #define LABO_04_CONTROLLER_HPP
 
 
-#include "../graphics/Field.hpp"
+#include "Field.hpp"
 #include <iostream>
 
 /**
