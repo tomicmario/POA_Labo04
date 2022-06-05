@@ -8,11 +8,15 @@ Controller::Controller(unsigned size, unsigned humans, unsigned vampires) :
 void Controller::run() {
     bool isEnding = false;
     std::string input;
+
     while(!isEnding){
         display();
         getline(std::cin, input);
 
-        if (input.length() == 0) continue;
+        // Enter input
+        if (input.length() == 0) {
+            input = "n";
+        };
 
         switch (input[0]) {
             case 'q':
@@ -38,6 +42,8 @@ void Controller::display() {
         std::cout << "Success rate : " << stats * 100 << "%" << std::endl;
     }
     std::cout << std::endl;
+
+    // debug
     std::cout << "humans : " << field.getHumansLeft() << "  vampires : " << field.getVampiresLeft() << std::endl;
 }
 

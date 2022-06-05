@@ -1,7 +1,3 @@
-//
-// Created by mario on 04/06/2022.
-//
-
 #include "util.hpp"
 #include <cmath>
 #include <random>
