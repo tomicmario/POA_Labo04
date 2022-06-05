@@ -3,7 +3,7 @@
 //
 
 #include "Human.hpp"
-#include "../graphics/Move.hpp"
+#include "../actions/Move.hpp"
 #include "../controller/util.hpp"
 #include "../controller/Field.hpp"
 

@@ -5,8 +5,8 @@
 #include "Vampire.hpp"
 #include "../controller/Field.hpp"
 #include "../controller/util.hpp"
-#include "../graphics/Transform.hpp"
-#include "../graphics/Move.hpp"
+#include "../actions//Transform.hpp"
+#include "../actions/Move.hpp"
 #include "Humanoid.hpp"
 
 Vampire::Vampire(unsigned x, unsigned y): Humanoid(x,y){

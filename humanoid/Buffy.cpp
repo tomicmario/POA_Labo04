@@ -5,8 +5,8 @@
 #include "Buffy.hpp"
 #include "../controller/Field.hpp"
 #include "../controller/util.hpp"
-#include "../graphics/Kill.hpp"
-#include "../graphics/Move.hpp"
+#include "../actions/Kill.hpp"
+#include "../actions/Move.hpp"
 #include "Humanoid.hpp"
 
 Buffy::Buffy(unsigned x, unsigned y): Humanoid(x,y, 2) {
