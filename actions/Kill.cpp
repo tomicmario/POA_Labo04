@@ -11,12 +11,14 @@ void Kill::execute(Field& field) {
 }
 
 bool Kill::killHumanoid(Field& field) {
-    std::shared_ptr<Humanoid> ptr = currentHumanoid.lock();
+    std::shared_ptr<Humanoid> humanoid = currentHumanoid.lock();
 
-    if(ptr){
-        if(ptr->isAlive()) {
-            ptr->setAlive(false);
-            if(dynamic_cast<Vampire*>(ptr.get()) != nullptr){
+    if(humanoid){
+        if(humanoid->isAlive()) {
+            humanoid->setAlive(false);
+
+            // Verifies if the humanoid is a vampire
+            if(dynamic_cast<Vampire*>(humanoid.get()) != nullptr){
                 field.vampireKilled();
             } else {
                 field.humanKilled();

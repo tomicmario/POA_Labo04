@@ -2,9 +2,9 @@
 #include <cmath>
 
 void Move::execute(Field &field) {
-    auto h = currentHumanoid.lock();
-    if(h){
-        h->setPosition(h->getX() + speedX, h->getY() + speedY);
+    auto humanoid = currentHumanoid.lock();
+    if(humanoid){
+        humanoid->setPosition(humanoid->getX() + speedX, humanoid->getY() + speedY);
     }
 }
 

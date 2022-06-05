@@ -1,7 +1,3 @@
-//
-// Created by ylang on 12.05.2022.
-//
-
 #include "Buffy.hpp"
 #include "../controller/Field.hpp"
 #include "../controller/util.hpp"
@@ -15,8 +11,10 @@ Buffy::Buffy(unsigned x, unsigned y): Humanoid(x,y, 2) {
 
 void Buffy::setAction(Field &field) {
     std::shared_ptr<Humanoid> vampire(field.findNearestVampire(shared_from_this()));
-    if(vampire != nullptr){
+
+    if(vampire){
         double distance = util::getDistance(shared_from_this(), vampire);
+
         if(distance <= 1.5){
             ac = std::make_shared<Kill>(vampire);
         } else  {

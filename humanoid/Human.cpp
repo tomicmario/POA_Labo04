@@ -1,7 +1,3 @@
-//
-// Created by ylang on 12.05.2022.
-//
-
 #include "Human.hpp"
 #include "../actions/Move.hpp"
 #include "../controller/util.hpp"

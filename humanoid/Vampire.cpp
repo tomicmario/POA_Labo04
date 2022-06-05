@@ -1,7 +1,3 @@
-//
-// Created by ylang on 12.05.2022.
-//
-
 #include "Vampire.hpp"
 #include "../controller/Field.hpp"
 #include "../controller/util.hpp"
@@ -15,8 +11,10 @@ Vampire::Vampire(unsigned x, unsigned y): Humanoid(x,y){
 
 void Vampire::setAction(Field &field) {
     std::shared_ptr<Humanoid> human(field.findNearestHuman(shared_from_this()));
-    if(human != nullptr){
+
+    if(human){
         double distance = util::getDistance(shared_from_this(), human);
+
         if(distance <= 1.0){
             ac = std::make_shared<Transform>(human);
         } else  {
@@ -24,6 +22,7 @@ void Vampire::setAction(Field &field) {
         }
     }
     else {
+        // Immobile
         ac = std::make_shared<Move>(shared_from_this(), x, y);
     }
 }

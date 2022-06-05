@@ -44,6 +44,5 @@ void Humanoid::setAlive(bool alive) {
     this->alive = alive;
 }
 
-Humanoid::~Humanoid() = default;
 
 
