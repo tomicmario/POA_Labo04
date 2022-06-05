@@ -12,6 +12,7 @@ void Kill::execute(Field& field) {
 
 bool Kill::killHumanoid(Field& field) {
     std::shared_ptr<Humanoid> ptr = currentHumanoid.lock();
+
     if(ptr){
         if(ptr->isAlive()) {
             ptr->setAlive(false);

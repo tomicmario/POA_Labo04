@@ -1,7 +1,3 @@
-//
-// Created by mario on 04/06/2022.
-//
-
 #include "Transform.hpp"
 #include "../controller/util.hpp"
 #include "../controller/Field.hpp"
