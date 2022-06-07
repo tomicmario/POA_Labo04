@@ -6,9 +6,9 @@ bool debug = true;
 using namespace std;
 
 int main(int argc, char *argv[]) {
-    int fieldSize = 20;
-    int humanAmount = 10;
-    int vampireAmount = 1;
+    int fieldSize = 50;
+    int humanAmount = 20;
+    int vampireAmount = 10;
     if(!debug) {
         if (argc != 4) {
             cout << "Expected arguments : [<field size>] [<human number>] [<vampire number>]" << endl;
