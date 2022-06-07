@@ -23,7 +23,7 @@ void Vampire::setAction(Field &field) {
     }
     else {
         // Immobile
-        ac = std::make_shared<Move>(shared_from_this(), x, y);
+        ac = nullptr;
     }
 }
 

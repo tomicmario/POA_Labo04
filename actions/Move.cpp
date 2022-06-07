@@ -8,10 +8,20 @@ void Move::execute(Field &field) {
     }
 }
 
-Move::Move(const std::shared_ptr<Humanoid> &humanoid, unsigned int desiredX, unsigned int desiredY): Action(humanoid) {
-    double angle = atan2((int)desiredY - (int)humanoid->getY(), (int)desiredX - (int)humanoid->getX());
+Move::Move(const std::shared_ptr<Humanoid>& humanoid, unsigned desiredX, unsigned desiredY): Action(humanoid) {
+    if(desiredX == humanoid->getX() && desiredY == humanoid->getY()){
+        speedX = desiredX == 0 ? 1 : -1;
+        speedY = 0;
+        return;
+    }
+    double angle = atan2((long)desiredY - (long)humanoid->getY(), (long)desiredX - (long)humanoid->getX());
     // vector rotation of a (x,y) vector, where x = humanoid speed and y = 0 -> speedX = cos(angle), speedY = sin(angle)
-    // if the desired coordinate is the same, the speed is set to 0
-    speedX = humanoid->getX() != desiredX ? round(humanoid->getSpeed() * cos(angle)) : 0;
-    speedY = humanoid->getY() != desiredY ? round(humanoid->getSpeed() * sin(angle)) : 0;
+    double idealSpeedX = humanoid->getSpeed() * cos(angle);
+    double idealSpeedY = humanoid->getSpeed() * sin(angle);
+
+    long maxSpeedX = (long)desiredX - (long)humanoid->getX();
+    long maxSpeedY = (long)desiredY - (long)humanoid->getY();
+
+    speedX = abs(maxSpeedX) < humanoid->getSpeed() ? maxSpeedX: round(idealSpeedX);
+    speedY = abs(maxSpeedY) < humanoid->getSpeed() ? maxSpeedY: round(idealSpeedY);
 }
