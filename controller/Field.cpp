@@ -1,5 +1,5 @@
 #include "Field.hpp"
-#include "util.hpp"
+#include "Util.hpp"
 #include "../humanoid/Human.hpp"
 #include "../humanoid/Vampire.hpp"
 #include "../humanoid/Buffy.hpp"
@@ -54,8 +54,8 @@ std::shared_ptr<Humanoid> Field::findNearestVampire(const std::shared_ptr<Humano
 
 void Field::generateVampires(unsigned amount) {
     for(unsigned i = 0; i < amount; ++i){
-        unsigned x = util::getRandomUnsigned(0, WIDTH);
-        unsigned y = util::getRandomUnsigned(0, HEIGHT);
+        unsigned x = Util::getRandomUnsigned(0, WIDTH);
+        unsigned y = Util::getRandomUnsigned(0, HEIGHT);
         humanoids.push_back(std::make_shared<Vampire>(x, y));
         vampires++;
     }
@@ -63,16 +63,16 @@ void Field::generateVampires(unsigned amount) {
 
 void Field::generateHumans(unsigned amount) {
     for(unsigned i = 0; i < amount; ++i){
-        unsigned x = util::getRandomUnsigned(0, WIDTH);
-        unsigned y = util::getRandomUnsigned(0, HEIGHT);
+        unsigned x = Util::getRandomUnsigned(0, WIDTH);
+        unsigned y = Util::getRandomUnsigned(0, HEIGHT);
         humanoids.push_back(std::make_shared<Human>(x, y));
         humans++;
     }
 }
 
 void Field::generateBuffy() {
-    unsigned x = util::getRandomUnsigned(0, WIDTH);
-    unsigned y = util::getRandomUnsigned(0, HEIGHT);
+    unsigned x = Util::getRandomUnsigned(0, WIDTH);
+    unsigned y = Util::getRandomUnsigned(0, HEIGHT);
     humanoids.push_back(std::make_shared<Buffy>(x, y));
 }
 
@@ -103,7 +103,7 @@ Field::nearestX(const std::shared_ptr<Humanoid>& searcher, std::function<bool (s
         // If the humanoid is of X type, then we check the distance and keep it if it's closer
         if (func(it)) {
             std::shared_ptr<Humanoid> currentClosest(it);
-            double currentDistance = util::getDistance(currentClosest, searcher);
+            double currentDistance = Util::getDistance(currentClosest, searcher);
             if(currentDistance < distance){
                 closestHuman = currentClosest;
                 distance = currentDistance;

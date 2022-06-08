@@ -1,6 +1,6 @@
 #include "Human.hpp"
 #include "../actions/Move.hpp"
-#include "../controller/util.hpp"
+#include "../controller/Util.hpp"
 #include "../controller/Field.hpp"
 
 Human::Human(unsigned x, unsigned y): Humanoid(x,y){
@@ -8,8 +8,8 @@ Human::Human(unsigned x, unsigned y): Humanoid(x,y){
 }
 
 void Human::setAction(Field &field) {
-    unsigned randomX = util::getRandomUnsigned(0, field.getWidth());
-    unsigned randomY = util::getRandomUnsigned(0, field.getHeight());
+    unsigned randomX = Util::getRandomUnsigned(0, field.getWidth());
+    unsigned randomY = Util::getRandomUnsigned(0, field.getHeight());
     ac = std::make_shared<Move>(shared_from_this(), randomX, randomY);
 }
 

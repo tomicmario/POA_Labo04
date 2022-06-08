@@ -27,6 +27,12 @@ public:
     ~Field();
 
     /**
+     * Disabled copy constructor and affectation operator
+     */
+    Field(const Field& other) = delete;
+    Field& operator=(const Field& other) = delete;
+
+    /**
      * Getter for the amount of vampires left
      * @return The amount of vampires left
      */

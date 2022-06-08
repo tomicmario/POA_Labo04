@@ -15,17 +15,17 @@ void Controller::run() {
 
         // Enter input
         if (input.length() == 0) {
-            input = "n";
+            input = NEXT;
         };
 
         switch (input[0]) {
-            case 'q':
+            case QUIT:
                 isEnding = true;
                 break;
-            case 's':
+            case STATS:
                 runFullSimulation();
                 break;
-            case 'n':
+            case NEXT:
                 nextFrame();
                 break;
             default:
@@ -37,14 +37,10 @@ void Controller::run() {
 
 void Controller::display() {
     field.display();
-    std::cout << "[" << round << "] q)uit s)tatistics n)ext : ";
     if(stats != 0.0){
-        std::cout << "Success rate : " << stats * 100 << "%" << std::endl;
+        std::cout  << "Success rate : " << stats * 100 << "%" << std::endl;
     }
-    std::cout << std::endl;
-
-    // debug
-    std::cout << "humans : " << field.getHumansLeft() << "  vampires : " << field.getVampiresLeft() << std::endl;
+    std::cout << "[" << round << "] q)uit s)tatistics n)ext : ";
 }
 
 void Controller::nextFrame() {
@@ -64,6 +60,7 @@ void Controller::runFullSimulation() {
             success++;
         }
     }
+    round = field.nextTurn();
     stats = (double)success / SIMULATIONS_AMOUNT;
 }
 

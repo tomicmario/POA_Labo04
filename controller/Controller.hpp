@@ -19,6 +19,13 @@ public:
     Controller(unsigned size, unsigned humans, unsigned vampires);
 
     /**
+     * Disabled copy constructor and affectation operator
+     */
+    Controller(const Controller& other) = delete;
+    Controller& operator=(const Controller& other) = delete;
+
+
+    /**
      * Runs the Controller with blocking calls for the input
      */
     void run();
@@ -27,6 +34,9 @@ private:
     const unsigned SIMULATIONS_AMOUNT = 10000;
     Field field;
     unsigned round;
+    static const char NEXT = 'n';
+    static const char QUIT = 'q';
+    static const char STATS = 's';
 
     /**
      * Displays the status of the field and the result of the simulation

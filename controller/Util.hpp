@@ -7,8 +7,9 @@
 /**
  * Small class offering functions that are used throughout the program
  */
-class util {
+class Util {
 public:
+
     /**
      * Returns the distance between two humanoids
      * @param h1 humanoid 1
@@ -24,6 +25,14 @@ public:
      * @return Randomly generated number
      */
     static unsigned getRandomUnsigned(unsigned min, unsigned max);
+
+
+    /**
+     * Disabled constructor, copy constructor and = operator
+     */
+    Util() = delete;
+    Util(const Util& other) = delete;
+    Util& operator=(const Util& other) = delete;
 };
 
 
