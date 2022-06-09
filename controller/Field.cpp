@@ -5,8 +5,6 @@
 #include "../humanoid/Buffy.hpp"
 #include <iostream>
 #include <iomanip>
-#include <cmath>
-#include <functional>
 
 
 Field::Field(unsigned height, unsigned width, unsigned humans, unsigned vampires)
@@ -39,17 +37,11 @@ unsigned Field::nextTurn()
 
 
 std::shared_ptr<Humanoid> Field::findNearestHuman(const std::shared_ptr<Humanoid>& searcher) const {
-    std::function<bool (const std::shared_ptr<Humanoid>)> isHuman = [](const std::shared_ptr<Humanoid>& humanoid) {
-        return dynamic_cast<Human*>(humanoid.get()) != nullptr;
-    };
-    return nearestX(searcher,isHuman);
+    return nearestX<Human*>(searcher);
 }
 
 std::shared_ptr<Humanoid> Field::findNearestVampire(const std::shared_ptr<Humanoid>& searcher) const {
-    std::function<bool (const std::shared_ptr<Humanoid>)> isVampire= [](const std::shared_ptr<Humanoid>& humanoid) {
-        return dynamic_cast<Vampire*>(humanoid.get()) != nullptr;
-    };
-    return nearestX(searcher,isVampire);
+    return nearestX<Vampire*>(searcher);
 }
 
 void Field::generateVampires(unsigned amount) {
@@ -94,18 +86,18 @@ unsigned Field::getHumansLeft() const {
     return humans;
 }
 
+template<class T>
 std::shared_ptr<Humanoid>
-Field::nearestX(const std::shared_ptr<Humanoid>& searcher, std::function<bool (std::shared_ptr<Humanoid>)> func) const {
+Field::nearestX(const std::shared_ptr<Humanoid>& searcher) const {
     std::shared_ptr<Humanoid> closestHuman;
     double distance = HEIGHT * WIDTH; // the distance can't be bigger than this
     for (const std::shared_ptr<Humanoid>& it : humanoids) {
 
         // If the humanoid is of X type, then we check the distance and keep it if it's closer
-        if (func(it)) {
-            std::shared_ptr<Humanoid> currentClosest(it);
-            double currentDistance = Util::getDistance(currentClosest, searcher);
+        if (dynamic_cast<T>(it.get()) != nullptr) {
+            double currentDistance = Util::getDistance(it, searcher);
             if(currentDistance < distance){
-                closestHuman = currentClosest;
+                closestHuman = it;
                 distance = currentDistance;
             }
         }

@@ -3,7 +3,6 @@
 
 #include <list>
 #include <memory>
-#include <functional>
 #include "../humanoid/Humanoid.hpp"
 
 /**
@@ -165,8 +164,9 @@ private:
      * @param func Function that determines if the given humanoid is of X type
      * @return Humanoid smart pointer of the closest X to a given humanoid
      */
+    template<class T>
     std::shared_ptr<Humanoid>
-    nearestX(const std::shared_ptr<Humanoid>& searcher, std::function<bool(std::shared_ptr<Humanoid>)> func) const;
+    nearestX(const std::shared_ptr<Humanoid>& searcher) const;
 };
 
 
