@@ -1,9 +1,10 @@
+#include <cmath>
 #include "Buffy.hpp"
 #include "../controller/Field.hpp"
 #include "../controller/Util.hpp"
 #include "../actions/Kill.hpp"
 #include "../actions/Move.hpp"
-#include "Humanoid.hpp"
+
 
 Buffy::Buffy(unsigned x, unsigned y): Humanoid(x,y, 2) {
 
@@ -15,7 +16,7 @@ void Buffy::setAction(Field &field) {
     if(vampire){
         double distance = Util::getDistance(shared_from_this(), vampire);
 
-        if(distance <= 1.5){
+        if(std::round(distance) <= 1){
             ac = std::make_shared<Kill>(vampire);
         } else  {
             ac = std::make_shared<Move>(shared_from_this(), vampire->getX(), vampire->getY());
