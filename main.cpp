@@ -5,6 +5,10 @@ bool debug = true;
 
 using namespace std;
 
+/**
+ * @authors Lange Yanik, Tomic Mario
+ * @brief Entry point of the application, taking the different parameters
+ */
 int main(int argc, char *argv[]) {
     int fieldSize = 50;
     int humanAmount = 20;
@@ -22,9 +26,11 @@ int main(int argc, char *argv[]) {
             cout << "All given arguments must be positive" << endl;
             return EXIT_SUCCESS;
         }
-        cout << "field size : " << fieldSize << endl
-             << "human amount : " << humanAmount << endl
-             << "vampire amount : " << vampireAmount << endl;
+
+        if(fieldSize < 2){
+            cout << "The field size must be at least two" << endl;
+            return EXIT_SUCCESS;
+        }
     }
 
     Controller c((unsigned)fieldSize, (unsigned)humanAmount, (unsigned)vampireAmount);

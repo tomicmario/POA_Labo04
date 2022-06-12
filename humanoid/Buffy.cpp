@@ -23,6 +23,7 @@ void Buffy::setAction(Field &field) {
         }
     }
     else {
+        speed = 1;
         unsigned randomX = Util::getRandomUnsigned(0, field.getWidth());
         unsigned randomY = Util::getRandomUnsigned(0, field.getHeight());
         ac = std::make_shared<Move>(shared_from_this(), randomX, randomY);
