@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
         vampireAmount = atoi(argv[3]);
 
         if(fieldSize <= 0 || humanAmount <= 0 || vampireAmount <= 0){
-            cout << "All given arguments must be positive" << endl;
+            cout << "All given arguments must be strictly positive" << endl;
             return EXIT_SUCCESS;
         }
 
